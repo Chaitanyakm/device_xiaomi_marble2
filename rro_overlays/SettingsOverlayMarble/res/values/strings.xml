@@ -9,4 +9,5 @@
      <string name="color_mode_option_boosted">Boosted</string>
      <string name="color_mode_option_saturated">Saturated</string>
      <string name="color_mode_option_automatic">Adaptive</string>
+     <string name="elixir_maintainer">CHAITANYA</string>
 </resources>

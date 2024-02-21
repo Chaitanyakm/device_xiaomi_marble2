@@ -713,6 +713,3 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     KeyHandler \
     XiaomiParts
-
-#Basic Call Recorder
-$(call inherit-product, vendor/bcr/bcr.mk)

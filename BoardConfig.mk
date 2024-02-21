@@ -112,8 +112,8 @@ BOARD_KERNEL_CMDLINE := \
     video=vfb:640x400,bpp=32,memsize=3072000 \
     disable_dma32=on \
     kpti=off \
-    swinfo.fingerprint=$(SUPERIOR_VERSION) \
-    mtdoops.fingerprint=$(SUPERIOR_VERSION) \
+    swinfo.fingerprint=$(AOSP_VERSION) \
+    mtdoops.fingerprint=$(AOSP_VERSION) \
     allow_file_spec_access \
     irqaffinity=0-3 \
     pelt=8
@@ -190,7 +190,7 @@ BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9659482112
 BOARD_PARTITION_LIST := $(call to-upper, $(BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST))
 $(foreach p, $(BOARD_PARTITION_LIST), $(eval BOARD_$(p)IMAGE_FILE_SYSTEM_TYPE := ext4))
 
-ifeq ($(BUILD_WITH_GAPPS),true)
+ifeq ($(TARGET_USES_PICO_GAPPS),true)
         BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE := 536870912
         BOARD_SYSTEM_EXTIMAGE_PARTITION_RESERVED_SIZE := 536870912
         BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 536870912

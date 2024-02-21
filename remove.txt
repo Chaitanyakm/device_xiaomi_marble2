@@ -1,0 +1,5 @@
+vendor/xiaomi/
+device/xiaomi/
+packages/apps/ViPER4AndroidFX
+hardware/xiaomi
+vendor/aosp
