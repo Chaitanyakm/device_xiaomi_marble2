@@ -34,9 +34,6 @@ hwui.render_dirty_regions=false
 # FEAS
 ro.feas.enable=true
 
-# FUSE passthrough
-persist.sys.fuse.passthrough.enable=true
-
 # Hint Manager
 debug.hwui.use_hint_manager=true
 debug.hwui.target_cpu_time_percent=30
