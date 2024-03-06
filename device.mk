@@ -165,10 +165,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 # Display
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator@3.0-impl \
-    android.hardware.graphics.allocator@4.0-impl \
-    android.hardware.graphics.mapper@3.0-impl-qti-display \
-    android.hardware.graphics.allocator-V1-ndk \
     android.hardware.graphics.common-V3-ndk \
     android.hardware.graphics.composer@2.4.vendor \
     gralloc.default \
@@ -316,7 +312,6 @@ PRODUCT_PACKAGES += \
     android.hardware.security.keymint-V1-ndk_platform.vendor \
     android.hardware.security.secureclock-V1-ndk_platform.vendor \
     android.hardware.security.sharedsecret-V1-ndk_platform.vendor \
-    android.hardware.security.rkp-V1-ndk_platform.vendor \
     libkeymaster_messages.vendor
 
 # Keymint
