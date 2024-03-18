@@ -174,6 +174,9 @@ TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
 
+# Fix prebuilt build
+$(shell mkdir -p $(OUT_DIR)/target/product/marble/obj/KERNEL_OBJ/usr)
+
 # OTA assert
 TARGET_OTA_ASSERT_DEVICE := marble|marblein
 
