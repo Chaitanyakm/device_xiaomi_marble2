@@ -19,6 +19,8 @@ TARGET_SUPPORTS_QUICK_TAP := true
 TARGET_INCLUDE_MATLOG := false
 ALPHA_BUILD_TYPE := Official
 ALPHA_MAINTAINER := CHAITANYA
+TARGET_DISABLE_EPPE := true
+
 # Inherit from marble device.
 $(call inherit-product, device/xiaomi/marble/device.mk)
 
