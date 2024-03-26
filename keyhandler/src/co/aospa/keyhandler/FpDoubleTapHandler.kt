@@ -73,7 +73,7 @@ class FpDoubleTapHandler(
     private var screenOnRunnable = Runnable { screenOn = true }
 
     init {
-        cameraManager.registerTorchCallback(
+        cameraManager!!.registerTorchCallback(
             object: CameraManager.TorchCallback() {
                 override fun onTorchModeChanged(cameraId: String, enabled: Boolean) {
                     if (cameraId == REAR_CAMERA_ID) {
@@ -107,8 +107,8 @@ class FpDoubleTapHandler(
     fun handleEvent(event: KeyEvent) {
         val enabled = isFpDoubleTapEnabled
         val action = fpDoubleTapAction
-        val interactive = powerManager.isInteractive() // TODO: support screen off?
-        Log.d(TAG, "handleEvent: enabled=$enabled action=$action"
+        val interactive = powerManager!!.isInteractive() // TODO: support screen off?
+        dlog("handleEvent: enabled=$enabled action=$action"
                 + " screenOn=$screenOn interactive=$interactive")
         if (!screenOn || !enabled || !interactive || event.action != KeyEvent.ACTION_UP) {
             Log.d(TAG, "wont handle")
@@ -153,14 +153,14 @@ class FpDoubleTapHandler(
         vibrate()
         val time = SystemClock.uptimeMillis()
         var event = KeyEvent(time, time, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE, 0)
-        audioManager.dispatchMediaKeyEvent(event)
+        audioManager?.dispatchMediaKeyEvent(event)
         event = KeyEvent.changeAction(event, KeyEvent.ACTION_UP)
-        audioManager.dispatchMediaKeyEvent(event)
+        audioManager!!.dispatchMediaKeyEvent(event)
     }
 
     private fun showNotifications() {
-        Log.d(TAG, "showNotifications")
-        statusBarManager.expandNotificationsPanel()
+        dlog("showNotifications")
+        statusBarManager!!.expandNotificationsPanel()
     }
 
     private fun launchCamera() {
@@ -175,32 +175,32 @@ class FpDoubleTapHandler(
     private fun toggleFlashlight() {
         Log.d(TAG, "toggleFlashlight: torchOn=$torchOn")
         vibrate()
-        cameraManager.setTorchMode(REAR_CAMERA_ID, !torchOn)
+        cameraManager!!.setTorchMode(REAR_CAMERA_ID, !torchOn)
     }
 
     private fun toggleRingerMode(ringerMode: Int) {
-        val currentMode = audioManager.getRingerModeInternal()
-        Log.d(TAG, "toggleRingerMode: $ringerMode currentMode=$currentMode")
+        val currentMode = audioManager!!.getRingerModeInternal()
+        dlog("toggleRingerMode: $ringerMode currentMode=$currentMode")
         vibrate()
-        audioManager.setRingerModeInternal(
+        audioManager!!.setRingerModeInternal(
             if (currentMode != ringerMode) ringerMode else AudioManager.RINGER_MODE_NORMAL
         )
     }
 
     private fun showVolumePanel() {
-        Log.d(TAG, "showVolumePanel")
-        audioManager.adjustVolume(AudioManager.ADJUST_SAME, AudioManager.FLAG_SHOW_UI)
+        dlog("showVolumePanel")
+        audioManager?.adjustVolume(AudioManager.ADJUST_SAME, AudioManager.FLAG_SHOW_UI)
     }
 
     private fun goToSleep() {
         Log.d(TAG, "goToSleep")
         vibrate()
-        powerManager.goToSleep(SystemClock.uptimeMillis())
+        powerManager?.goToSleep(SystemClock.uptimeMillis())
     }
 
     private fun vibrate() {
-        if (vibrator.hasVibrator()) {
-            vibrator.vibrate(vibrationEffect, vibrationAttrs)
+        if (vibrator!!.hasVibrator()) {
+            vibrator!!.vibrate(vibrationEffect, vibrationAttrs)
         }
     }
 
